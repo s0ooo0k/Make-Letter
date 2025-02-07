@@ -64,7 +64,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: url("asset/main1.jpg");
+  background: url("./asset/main1.jpg");
 
   background-size: cover;
 }
@@ -94,12 +94,12 @@ body {
 }
 
 .container-text {
-  background: url("asset/main1.jpg");
+  background: url("./asset/main1.jpg");
   background-size: cover;
 }
 
 .container-text2 {
-  background: url("asset/main4.jpg");
+  background: url("./asset/main4.jpg");
   background-size: cover;
 }
 
