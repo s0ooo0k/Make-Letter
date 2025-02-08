@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       addTranslate(letter);
     } catch (error) {
-      addMsg("에러 발생" + error.message);
+      addMsg("다시 한 번 실행 해주세요" + error.message);
     } finally {
       hideSp();
     }

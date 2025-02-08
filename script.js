@@ -99,6 +99,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (!response.ok) throw new Error(`번역 실패: ${response.status}`);
 
       const json = await response.json();
+      // console.log(json);
       return json.translatedLetter;
     } catch (error) {
       console.error("번역 실패", error);
@@ -166,7 +167,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       addTranslate(letter);
     } catch (error) {
-      addMsg("에러 발생" + error.message);
+      addMsg("다시 한 번 실행 해주세요" + error.message);
     } finally {
       hideSp();
     }
