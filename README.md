@@ -4,7 +4,7 @@
 🔧 **MAKE LETTER**는 Gemini API - LLM Chaining을 활용하여 자기소개서 자동 생성 기능을 제공하는 웹 애플리케이션입니다.    
 📝 직군, 경력, 정보를 입력한 후 AI에게 **맞춤 자기소개서**를 제공받아 보세요!  
 🆎 RESUME를 위한 영어 번역도 제공합니다   
-🔗 https://s0ooo0k.github.io/Make-Letter/index.html
+🔗 https://s0ooo0k.github.io/Make-Letter
 
 ## 🤖 DEMO
 ![video](https://github.com/user-attachments/assets/77fd6680-6291-4dd5-9fc2-6d41c3a26880)
