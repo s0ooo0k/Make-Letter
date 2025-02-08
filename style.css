@@ -58,13 +58,13 @@ body {
 
 .main-side {
   padding: 60px;
-  background: url("./asset/main1.jpg");
+  background: url("./asset/main1.JPG");
   background-size: cover;
 }
 
 .main-side2 {
   padding: 60px;
-  background: url("./asset/main4.jpg");
+  background: url("./asset/main4.JPG");
   background-size: cover;
 }
 
@@ -103,12 +103,12 @@ body {
 }
 
 .container-text {
-  background: url("./asset/main1.jpg");
+  background: url("./asset/main1.JPG");
   background-size: cover;
 }
 
 .container-text2 {
-  background: url("./asset/main4.jpg");
+  background: url("./asset/main4.JPG");
   background-size: cover;
 }
 
