@@ -171,6 +171,9 @@ body {
   padding: 10px;
 }
 
+.form-text {
+  color: white;
+}
 /* 푸터 */
 .footer {
   background-color: #000000 !important;

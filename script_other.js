@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       try {
         const translatedLetter = await translate(letter);
         btn.remove();
-        addMsg("[English Translation]\n" + translatedLetter);
+        addMsg("[🆎 English Translation]\n" + translatedLetter);
       } catch (error) {
         addMsg("번역 중 오류 발생: " + error.message);
       } finally {
@@ -156,13 +156,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       // Chain 1
       const bulletPoint = await makePoint(position, career, briefing);
-      addMsg("[Bullet Point]\n" + bulletPoint);
+      addMsg("[🖊️핵심 3줄 요약]\n" + bulletPoint);
 
       showMessage();
       // Chain 2
       const letter = await makeLetter(bulletPoint);
       removeMessage();
-      addMsg("[자기소개서]\n" + letter);
+      addMsg("[😄 자기소개서]\n" + letter);
 
       addTranslate(letter);
     } catch (error) {
