@@ -19,8 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // form
   const form = document.querySelector("#controller");
 
-  const GEMINI_API_KEY = "";
-  const model = "gemini-2.0-flash-thinking-exp-01-21";
+  // const GEMINI_API_KEY = "";
 
   // spinner
   const showSp = () => {
@@ -52,34 +51,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // [Chain 1 함수] Bullet Point 형식으로 정리하기
   const makePoint = async (position, career, briefing) => {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
+    const url = `https://tidal-important-platypus.glitch.me/otherbulletPoint`;
 
-    const prompt = `${position}은 이 사람의 직업이자, 지원하고 싶은 분야야. 경력은 몇 년 일했는지에 따라 다르고 ${career}이고, ${briefing}의 내용을 기반으로 자기소개서를 만들거야. 그 전에 이 내용을 bullet point로 간단하게 정리하려고 해.
-
-    - 핵심 기술 및 스킬 요약
-    - 주요 업무 경험
-    - 자기소개서에서 강조할 부분
-
-    로 정리해줘. 자기소개서는 작성하지마. 위의 3개의 bullet point만 각각 100자 이내로 작성해줘. 따로 제목 메세지 없이, 그냥 bullet point 내용만 보여주면 돼. ##이나 ** 같은 마크다운 언어는 모두 지우고, 평문으로만 작성해줘.`;
-
-    // 예외 처리
     try {
-      const response = await axios.post(
-        url,
-        {
-          contents: [
-            {
-              parts: [{ text: prompt }],
-            },
-          ],
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      return response.data.candidates[0].content.parts[0].text;
+        body: JSON.stringify({ position, career, briefing }),
+      });
+      const json = await response.json();
+      return json.bulletPoint;
     } catch (error) {
       console.error("Bullet Point 생성 실패", error);
       throw new Error("Bullet Point 생성 실패");
@@ -88,27 +71,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // [Chain 2 함수] Chain 1의 Bullet Point를 바탕으로 자기소개 생성
   const makeLetter = async (bulletPoint) => {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
-
-    const prompt = `${bulletPoint}의 바탕으로 500자 내외의 자기소개서를 작성해줘. 마크다운을 사용하지 않고, 평문 한국어로만 작성해줘. Bullet Point를 요약한 내용은 출력하지 않아도 되고, 자기소개서만 출력해줘.`;
-
+    const url = `https://tidal-important-platypus.glitch.me/letter`;
     try {
-      const response = await axios.post(
-        url,
-        {
-          contents: [
-            {
-              parts: [{ text: prompt }],
-            },
-          ],
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      return response.data.candidates[0].content.parts[0].text;
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ bulletPoint }),
+      });
+      const json = await response.json();
+      return json.letter;
     } catch (error) {
       console.error("자기소개서 생성 실패", error);
       throw new Error("자기소개서 생성 실패");
@@ -116,29 +87,19 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   // [Chain 3] 영어 번역하기
-  const translate = async (text) => {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
-
-    const prompt = `Translate the following Korean text into English. Don't change Anything :
-    ${text}. `;
-
+  const translate = async (letter) => {
+    const url = `https://tidal-important-platypus.glitch.me/translate`;
     try {
-      const response = await axios.post(
-        url,
-        {
-          contents: [
-            {
-              parts: [{ text: prompt }],
-            },
-          ],
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      return response.data.candidates[0].content.parts[0].text;
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ letter }),
+      });
+
+      if (!response.ok) throw new Error(`번역 실패: ${response.status}`);
+
+      const json = await response.json();
+      return json.translatedLetter;
     } catch (error) {
       console.error("번역 실패", error);
       throw new Error("번역 실패");
@@ -161,9 +122,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       btn.disabled = true;
 
       try {
-        const translateText = await translate(letter);
+        const translatedLetter = await translate(letter);
         btn.remove();
-        addMsg("[English Translation]\n" + translateText);
+        addMsg("[English Translation]\n" + translatedLetter);
       } catch (error) {
         addMsg("번역 중 오류 발생: " + error.message);
       } finally {
