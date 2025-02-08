@@ -28,4 +28,5 @@
 ![Google Gemini API](https://img.shields.io/badge/Google%20Gemini%20API-%234285F4.svg?style=for-the-badge&logo=google&logoColor=white)
 
 ## 🖊️ 개발 블로그
-(추후 업로드 예정..)
+- TIL : https://github.com/s0ooo0k/TIL/issues/20 - 관련하여 간단한 내용 정리
+- BLOG : (추후 업로드 예정..) - 자세한 기록 ..
