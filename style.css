@@ -271,7 +271,8 @@ body {
 }
 
 @media (max-width: 768px) {
-  .main-side {
+  .main-side,
+  .main-side2 {
     padding: 10px;
   }
   .main-allign {
