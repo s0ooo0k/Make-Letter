@@ -38,10 +38,9 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- 네비게이션 바 -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.html">
           <img src="asset/logo.png" class="d-inline-block align-text-top" />
         </a>
         <button
@@ -67,23 +66,57 @@
         </div>
       </div>
     </nav>
-    <!-- 메인 섹션 -->
-    <section class="main-section container-text">
-      <div class="container pro-con text-center">
-        <h1>개발자 자기소개서 생성기</h1>
-        <p>맞춤형 자기소개서를 빠르고 쉽게 만들어 보세요!</p>
-        <a href="develop.html" class="btn btn-lg btn-danger">시작하기</a>
-      </div>
-    </section>
-    <section class="main-section container-text2">
-      <div class="container othe-con text-center">
-        <h1>타 직종 자기소개서 생성기</h1>
-        <p>맞춤형 자기소개서를 빠르고 쉽게 만들어 보세요!</p>
-        <a href="other.html" class="btn btn-lg btn-danger">시작하기</a>
-      </div>
-    </section>
 
-    <section class=""></section>
+    <!-- main -->
+    <div class="main-side2">
+      <div class="main-allign">
+        <section class="form-section">
+          <form id="controller" class="form-container">
+            <section>
+              <label>
+                직업
+                <textarea
+                  name="position"
+                  placeholder="직업을 입력하세요!"
+                  class="form-control"
+                ></textarea>
+              </label>
+            </section>
+            <section>
+              <label>
+                커리어 <br />
+                <select name="career" class="form-control">
+                  <option value="entry-level">신입</option>
+                  <option value="junior">1~3년차</option>
+                  <option value="mid-level">3~5년차</option>
+                  <option value="senior">5년차~10년차</option>
+                  <option value="executive">그 이상</option>
+                </select>
+              </label>
+            </section>
+            <section>
+              <textarea
+                name="briefing"
+                placeholder="본인에 대한 간단한 설명을 작성해주세요!"
+                class="form-control"
+              ></textarea>
+            </section>
+            <section>
+              <button class="btn btn-primary">제출</button>
+            </section>
+          </form>
+        </section>
+        <section class="print-section" id="box">
+          <img
+            src="./asset/spinner.gif"
+            id="loadSpn"
+            class="spinner"
+            style="display: none"
+          />
+          <div id="content-box"></div>
+        </section>
+      </div>
+    </div>
 
     <!-- 푸터 -->
     <footer class="footer">
@@ -92,6 +125,8 @@
       </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script_other.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

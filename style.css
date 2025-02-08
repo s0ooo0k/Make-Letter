@@ -55,18 +55,27 @@ body {
 }
 
 /* 메인 섹션 */
+
+.main-side {
+  padding: 60px;
+  background: url("./asset/main1.jpg");
+  background-size: cover;
+}
+
+.main-side2 {
+  padding: 60px;
+  background: url("./asset/main4.jpg");
+  background-size: cover;
+}
+
 .main-allign {
-  width: 100%;
-  height: 800px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: url("./asset/main1.jpg");
-
-  background-size: cover;
+  min-height: 85vh;
 }
 .main-section {
   width: 100%;
@@ -84,7 +93,7 @@ body {
   font-family: "Noto Sans KR", serif;
   font-size: 40px;
   font-weight: bold;
-  text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.3);
+  text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.767);
 }
 
 .main-section p {
@@ -120,21 +129,46 @@ body {
 }
 
 .form-section {
-  width: 40%;
+  width: 45%;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .print-section {
-  width: 60%;
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  align-items: center; */
-  min-width: 300px; /* 최소 너비 설정 */
-  overflow-y: auto; /* 내용이 길어지면 스크롤 */
-  max-height: 600px; /* 너무 길어지지 않도록 최대 높이 설정 */
-  color: white;
+  align-items: center;
+  width: 50%;
+  max-width: 1100px;
+  min-width: 400px;
+  max-height: 1000px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: black;
+  margin: 20px;
+  text-align: center;
+}
+
+#box {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  max-width: 100%; /* 컨테이너 크기 유지 */
+  word-wrap: break-word; /* 긴 단어 줄바꿈 */
+  overflow-wrap: break-word; /* 브라우저별 줄바꿈 */
+  white-space: pre-line; /* 개행 적용 */
+}
+
+#content-box {
+  background-color: #f8f9fae1;
+  opacity: 0;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 /* 푸터 */
@@ -164,8 +198,8 @@ body {
 
 .form-container {
   font-family: "Noto Sans KR", serif;
-  background-color: white;
-  padding: 25px;
+  background-color: rgba(255, 255, 255, 0.89);
+  padding: 20px;
   border-radius: 15px;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
   display: flex;
@@ -173,7 +207,7 @@ body {
   align-items: stretch;
   border: 2px solid #8ea1b6;
   text-align: center;
-  width: 60%;
+  width: 70%;
 }
 
 /* 입력 필드 공통 스타일 */
@@ -183,7 +217,7 @@ body {
   font-size: 16px;
   padding: 9px;
   border: 1px solid #bbb;
-  background-color: #f8f9fa;
+  background-color: rgba(255, 255, 255, 0.89);
   transition: all 0.3s ease-in-out;
   margin: 8px;
   appearance: auto;
@@ -225,16 +259,41 @@ body {
   min-height: 350px;
 }
 
-/* 반응형 처리 */
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  margin: auto;
+}
+
 @media (max-width: 768px) {
+  .main-side {
+    padding: 10px;
+  }
   .main-allign {
-    flex-direction: column;
+    flex-direction: column; /* 🔥 작은 화면에서는 세로 배치 */
     align-items: center;
     justify-content: space-around;
+    gap: 20px;
   }
 
-  .form-section,
-  .print-section {
+  .form-section {
+    max-width: 400px;
     width: 90%;
+    padding: 0px;
+  }
+  .form-container {
+    width: 80%;
+  }
+  .print-section,
+  #box {
+    width: 95%;
+    padding: 10px;
+  }
+
+  #box p {
+    font-size: 14px;
+    word-break: break-word;
   }
 }
